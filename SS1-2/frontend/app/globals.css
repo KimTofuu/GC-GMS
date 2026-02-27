@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ececec;
+  --background: #FAF9F6;
   --foreground: #1f2024;
   --header-offset: 80px;
   --sidebar-edge-gap: 10px;
@@ -103,7 +103,7 @@ body.dashboard-no-page-scroll .dashboard-root {
   background: #ffffff;
   border: 1px solid #d9d9d9;
   border-radius: 0 16px 16px 0;
-  height: calc(100dvh - var(--header-offset) - (2 * var(--sidebar-edge-gap)));
+  height: calc(100dvh - var(--header-offset) - (1 * var(--sidebar-edge-gap)));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
