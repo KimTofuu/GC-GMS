@@ -201,7 +201,7 @@ export default function LoginPage() {
 
             <button type="submit" className="login-button">Sign In</button>
             <hr />
-            <p className="signup-link">Restricted access. Authorized registrar accounts only.</p>
+            <p className="signup-link">Restricted access. Authorized registrar accounts only</p>
             <p className="footer">© 2026 GC-GMS. All rights reserved.</p>
           </form>
         </div>
