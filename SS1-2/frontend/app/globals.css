@@ -5,6 +5,7 @@
   --foreground: #1f2024;
   --header-offset: 80px;
   --sidebar-edge-gap: 10px;
+  --shell-bottom-gap: 12px;
 }
 
 @theme inline {
@@ -93,8 +94,8 @@ body.dashboard-no-page-scroll .dashboard-root {
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 18px;
-  padding: var(--sidebar-edge-gap) 0 24px;
-  min-height: calc(100dvh - var(--header-offset) - var(--sidebar-edge-gap));
+  padding: var(--sidebar-edge-gap) 0 var(--shell-bottom-gap);
+  height: calc(100dvh - var(--header-offset));
   transition: grid-template-columns 0.2s ease;
 }
 
@@ -103,10 +104,12 @@ body.dashboard-no-page-scroll .dashboard-root {
   background: #ffffff;
   border: 1px solid #d9d9d9;
   border-radius: 0 16px 16px 0;
-  height: calc(100dvh - var(--header-offset) - (1 * var(--sidebar-edge-gap)));
+  height: calc(
+    100dvh - var(--header-offset) - var(--sidebar-edge-gap) - var(--shell-bottom-gap)
+  );
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: calc(var(--header-offset) + var(--sidebar-edge-gap));
@@ -174,12 +177,13 @@ body.dashboard-no-page-scroll .dashboard-root {
 }
 
 .nav-item.settings {
-  margin: 0 0 14px;
+  margin: auto 0 14px;
 }
 
 .dashboard-main {
   padding: 0 18px 0 0;
   min-width: 0;
+  min-height: 0;
   overflow: visible;
 }
 
