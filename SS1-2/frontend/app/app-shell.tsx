@@ -17,11 +17,20 @@ const navItems = [
 export default function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
+  const noShellRoutes = ["/login"];
+  const shouldHideShell = noShellRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
 
   useEffect(() => {
-    const isDashboardRoute = pathname === "/dashboard" || pathname.startsWith("/dashboard/");
-    document.body.classList.toggle("dashboard-no-page-scroll", isDashboardRoute);
-    document.documentElement.classList.toggle("dashboard-no-page-scroll", isDashboardRoute);
+    const isFixedViewportRoute =
+      pathname === "/dashboard" ||
+      pathname.startsWith("/dashboard/") ||
+      pathname === "/checklist" ||
+      pathname.startsWith("/checklist/");
+
+    document.body.classList.toggle("dashboard-no-page-scroll", isFixedViewportRoute);
+    document.documentElement.classList.toggle("dashboard-no-page-scroll", isFixedViewportRoute);
 
     return () => {
       document.body.classList.remove("dashboard-no-page-scroll");
@@ -30,6 +39,10 @@ export default function AppShell({ children }: AppShellProps) {
   }, [pathname]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
+  if (shouldHideShell) {
+    return <>{children}</>;
+  }
 
   return (
     <div className="dashboard-root">

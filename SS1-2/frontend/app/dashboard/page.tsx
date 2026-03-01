@@ -1,4 +1,5 @@
 import "./dashboard.css";
+import DashboardImportControl from "./DashboardImportControl";
 
 type StatCard = {
   value: number;
@@ -57,7 +58,10 @@ const departmentRows: DepartmentRow[] = [
 export default function DashboardPage() {
   return (
     <main className="dashboard-main dashboard-page">
-      <h1 className="dashboard-heading">Dashboard</h1>
+      <section className="dashboard-top-row" aria-label="Dashboard controls">
+        <h1 className="dashboard-heading">Dashboard</h1>
+        <DashboardImportControl />
+      </section>
 
       <section className="stats-grid" aria-label="Enrollment Summary">
         {statCards.map((card) => (
